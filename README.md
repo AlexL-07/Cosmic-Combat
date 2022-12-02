@@ -17,6 +17,9 @@ In addition, this project will include:
 * Periodically changing wind that will affect a player's shot
 * Background music and SFX when playing the game 
 
+## Layouts
+![Untitled-2022-12-02-0003](https://user-images.githubusercontent.com/103486289/205249245-66fe0c5d-9ed4-4ce0-a8ab-11bb1a9b5dd5.png)
+
 ## How to Play
 * Play locally with 2 to 4 players
 * On your turn, you have 30 seconds to move your Spaceship and shoot your shot
