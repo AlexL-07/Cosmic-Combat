@@ -38,7 +38,7 @@ In addition, this project will include:
 ## Implementation Timeline
 * Friday - Research the physics and math needed for the projectiles
 * Saturday - Implement a working spaceship with accurate projectiles using JavaScript 
-* Sunday - Render the main menu, UI and maps using Canvas API and CSS
+* Sunday - Render the main menu, UI and map using Canvas API and CSS
 * Monday - Implement the destructible terrain logic using JavaScript
 * Tuesday - Render the spaceship and projectiles to follow the flight path using Canvas API and CSS 
 * Wednesday - Clean up any errors, and if there is extra time add an extra spaceship

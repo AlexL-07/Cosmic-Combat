@@ -4,12 +4,83 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./dist/main.css" />
-    <script src="./dist/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="./dist/main.css" />
+    <script type="application/javascript" src="./vendor/keymaster.js" defer></script>
+    <script type="application/javascript" src="./dist/main.js" defer></script>
     <title>Spaceship Wars</title>
   </head>
 
   <body>
+    <div class="main">
+      <div id="overlay" class="hidden"></div>
+      <canvas id="canvas" width="1200px" height="650px"></canvas> 
+      <!--  -->
+      <canvas id="terrain-canvas" width="1200px" height="650px"></canvas>
+      <canvas id="ui-canvas" width="1200px" height="650px"></canvas>
+      <canvas id="text-canvas" width="1200px" height="650px"></canvas>
+    </div>
+
+    <div id="bottom-ui">
+      <div class="shot-selector-container" id="shot-selection">
+        <div class="shot-selector" id='shot1'>
+          <span>1</span>
+          <div class="light" id="light1"></div>
+        </div>
+
+        <div class="shot-selector" id="shot2">
+          <span>2</span>
+          <div class="light" id="light2"></div>
+        </div>
+
+        <div class="shot-selector" id="ss">
+          <span>SS</span>
+          <div class="light" id="lightss"></div>
+        </div>
+      </div>
+      <div id="angle-display-container">
+        <span>Angle</span>
+        <div id="angle-display"></div>
+      </div>
+      <div id="power-container" style='width: 1000px;'>
+        <div id="power-fill" style='width: 5px;'>
+          <div id="one-fourth"><div id="one-eighth"></div></div>
+          <div id="two-fourth"><div id="three-eighth"></div></div>
+          <div id="three-fourth"><div id="five-eighth"></div></div>
+          <div id="four-fourth"><div id="seven-eighth"></div></div>
+          <div id='prev-power'></div>
+        </div>
+      </div>
+    </div>
+
+    <div id='wind-container'>
+      <div id="wind-icon">
+        <span id="wind-text"></span>
+      </div>
+    </div>
+
+    <div id="turn-queue-container">
+      <span>Delay Queue</span>
+      <ul id="turn-queue">
+
+      </ul>
+    </div>
+    
+    <div id="vol-container">
+      <img src="./assets/high-sound-icon.png" class="vol" id="high-volume" >
+      <img src="./assets/mute-icon.png" class="vol hidden" id="mute">
+    </div>
+
+    <ul id="directions-container">
+      <li>Press 'A' or 'D' to move left or right</li>
+      <li>Press 'W' or 'S' to change the angle of your shot</li>
+      <li>Press and hold 'Space' to choose the power</li>
+      <li>Press '1', '2', or '3' to choose the type of shot</li>
+      <li>The longer you take or the more powerful your shot, the more delay you'll get</li>
+      <li>Watch out for wind changes!</li>
+      <li>Refresh the page to play again!</li>
+    </ul>
+
+    <h1>Spaceship Wars</h1>
   </body>
 
 </html>
