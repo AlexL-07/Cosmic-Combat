@@ -9,14 +9,16 @@ class Projectile {
         this.xVel = xVel;
         this.yVel = yVel;
         this.time = 0;
-        this.radius = 8;
+        this.radius = 10;
         this.ctx = ctx;
         this.weight = 0.055;
         this.damage = 130;
         this.hitObject = null;
         this.explosionRadius = 50;
         this.ctxTerrain = ctxTerrain;
-        this.color = 'rgb(0,255,0)' // change this to use a sprite
+        // this.color = 'rgb(0,255,0)' // change this to use a sprite
+        this.sprite = new Image();
+        this.sprite.src = './assets/small_blue_fireball.png'
         this.windAngle = window.map.windAngle;
         this.windSpeed = window.map.windSpeed;
 
@@ -41,7 +43,7 @@ class Projectile {
                     );
                     window.game.turnCounter--;
                 }
-                document.getElementById('overlay').classList.add('hidden'); //ss shot overlay
+                document.getElementById('overlay').classList.add('hidden'); 
         
                 window.game.time = window.game.TIMEOUT;
                 clearInterval(window.game.interval);
@@ -59,7 +61,7 @@ class Projectile {
                 window.game.removeObject(this);
                 window.map.weapon = this;
         
-                document.getElementById('overlay').classList.add('hidden'); //ss shot overlay
+                document.getElementById('overlay').classList.add('hidden'); 
         
                 window.game.time = window.game.TIMEOUT;
                 clearInterval(window.game.interval);
@@ -72,11 +74,13 @@ class Projectile {
     
             this.x += this.xVel + 0.02*this.windSpeed*Math.cos(this.windAngle*Math.PI/180)*this.time; //x coordinate
             this.y += this.yVel + 0.5*this.weight*this.time*this.time - 0.02*this.windSpeed*Math.sin(this.windAngle*Math.PI/180)*this.time; //y-coordinate
-    
+
+            
             ctx.beginPath(); //render weapon
             ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI);
-            ctx.fillStyle = this.color;
-            ctx.fill();
+            ctx.drawImage(this.sprite, this.x, this.y)
+            // // ctx.fillStyle = this.color;
+            // ctx.fill();
             ctx.closePath();
             this.time += 0.5;
         }

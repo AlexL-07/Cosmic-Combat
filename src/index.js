@@ -1,6 +1,6 @@
 import Game from './scripts/game';
 
-console.log("hello")
+
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 const terrain = document.getElementById("terrain-canvas")
@@ -9,12 +9,15 @@ const ui = document.getElementById("ui-canvas")
 const ctxUI = ui.getContext("2d")
 const canText = document.getElementById('text-canvas')
 const ctxText = canText.getContext("2d")
+const background = document.getElementById("background")
+const ctxBG = background.getContext("2d")
 
 
 document.addEventListener('DOMContentLoaded', () => {
 
 
-    let game = new Game(canvas, ctx, ctxTerrain, terrain, canText, ctxText);
+    let game = new Game(canvas, ctx, ctxTerrain, terrain, canText, ctxText, background, ctxBG);
+    ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
     window.map = game.map;
     let timer = document.createElement('div');
     timer.id = 'main-timer';
@@ -25,19 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('vol-container').onclick = () =>
     {
       if (game.theme.volume === 0) {
-        game.theme.volume = 0.0; //set back to 0.7 later 
-        game.turn.volume = 0.0;
-        game.win.volume = 0.0;
-        game.wind.volume = 0.0;
-        document.getElementById('high-volume').classList.remove('hidden');
-        document.getElementById('mute').classList.add('hidden');
+            game.theme.volume = 0.0; //set back to 0.7 later 
+            game.turn.volume = 0.0;
+            game.win.volume = 0.0;
+            game.wind.volume = 0.0;
+            document.getElementById('high-volume').classList.remove('hidden');
+            document.getElementById('mute').classList.add('hidden');
       } else {
-        game.theme.volume = 0;
-        game.turn.volume = 0;
-        game.win.volume = 0;
-        game.wind.volume = 0;
-        document.getElementById('high-volume').classList.add('hidden');
-        document.getElementById('mute').classList.remove('hidden');
+            game.theme.volume = 0;
+            game.turn.volume = 0;
+            game.win.volume = 0;
+            game.wind.volume = 0;
+            document.getElementById('high-volume').classList.add('hidden');
+            document.getElementById('mute').classList.remove('hidden');
       }
     };
   

@@ -9,8 +9,8 @@ class SpaceShip {
         this.y = ypos;
         this.ctx = ctx;
         this.ctxTerrain = ctxTerrain;
-        this.width = 50;
-        this.height = 35;
+        this.width = 65;
+        this.height = 40;
         this.maxHealth = 1000;
         this.health = 1000;
         this.currentWeapon = 1;
@@ -19,8 +19,8 @@ class SpaceShip {
         this.velX = 0;
         this.velY = 0;
         this.prevAngle = 0;
-        this.maxAngle = 90;
-        this.minAngle = 40;
+        this.maxAngle = 93;
+        this.minAngle = 37;
         this.angle = Math.floor((this.maxAngle + this.minAngle)/2);
         this.delay = 0; 
         this.distance = 0;
@@ -62,39 +62,51 @@ class SpaceShip {
             this.turnOver = true;
           }
 
-        if (this.face === "right"){
-            window.UI.ctx.fillStyle = 'rgba(255,0,0,1)'; //healthbar
-            window.UI.ctx.fillRect(this.x-25, this.y+this.height+15, this.width+30, 4);
-            window.UI.ctx.fillStyle = 'rgba(0,255,0,1)';
-            window.UI.ctx.fillRect(this.x-25, this.y+this.height+15, (this.width+30)*(this.health/this.maxHealth), 4);
+        // if (this.face === "right"){
+        //     window.UI.ctx.fillStyle = 'rgba(255,0,0,1)'; //healthbar
+        //     window.UI.ctx.fillRect(this.x-43, this.y+this.height+15, this.width+30, 4);
+        //     window.UI.ctx.fillStyle = 'rgba(0,255,0,1)';
+        //     window.UI.ctx.fillRect(this.x-43, this.y+this.height+15, (this.width+30)*(this.health/this.maxHealth), 4);
             
-            window.UI.ctx.font = "14px sans-serif"; //username
-            window.UI.ctx.fillStyle = 'white';
-            window.UI.ctx.fillText(this.username, this.x+20, this.y+this.height+35);
-        } else if (this.face === "left"){
-            window.UI.ctx.fillStyle = 'rgba(255,0,0,1)'; //healthbar
-            window.UI.ctx.fillRect(this.x, this.y+this.height+15, this.width+30, 4);
-            window.UI.ctx.fillStyle = 'rgba(0,255,0,1)';
-            window.UI.ctx.fillRect(this.x, this.y+this.height+15, (this.width+30)*(this.health/this.maxHealth), 4);
+        //     window.UI.ctx.font = "14px sans-serif"; //username
+        //     window.UI.ctx.fillStyle = 'white';
+        //     window.UI.ctx.fillText(this.username, this.x, this.y+this.height+35);
+        // } else if (this.face === "left"){
+        //     window.UI.ctx.fillStyle = 'rgba(255,0,0,1)'; //healthbar
+        //     window.UI.ctx.fillRect(this.x, this.y+this.height+15, this.width+30, 4);
+        //     window.UI.ctx.fillStyle = 'rgba(0,255,0,1)';
+        //     window.UI.ctx.fillRect(this.x, this.y+this.height+15, (this.width+30)*(this.health/this.maxHealth), 4);
       
-            window.UI.ctx.font = "14px sans-serif"; //username
-            window.UI.ctx.fillStyle = 'white';
-            window.UI.ctx.fillText(this.username, this.x+40, this.y+this.height+35);
-        }
+        //     window.UI.ctx.font = "14px sans-serif"; //username
+        //     window.UI.ctx.fillStyle = 'white';
+        //     window.UI.ctx.fillText(this.username, this.x+40, this.y+this.height+35);
+        // }
+
+        window.UI.ctx.fillStyle = 'rgba(255,0,0,1)'; //healthbar
+        window.UI.ctx.fillRect(this.x - 25, this.y+this.height+15, this.width+30, 4);
+        window.UI.ctx.fillStyle = 'rgba(0,255,0,1)';
+        window.UI.ctx.fillRect(this.x - 25, this.y+this.height+15, (this.width+30)*(this.health/this.maxHealth), 4);
+  
+        window.UI.ctx.font = "14px sans-serif"; //username
+        window.UI.ctx.fillStyle = 'white';
+        window.UI.ctx.fillText(this.username, this.x + 23, this.y+this.height+35);
       
-        if (this.rotation) {
+        // if (this.rotation) {
       
-            this.ctx.save();
-            // console.log(this.x+window.UI.canvas.width/2)
-            this.ctx.translate(this.x+this.width/2, this.y+this.height/2);
-            this.ctx.rotate(this.rotation * Math.PI / 180);
-            this.ctx.translate(-(this.x+this.width/2), -(this.y+this.height/2));
-        }
+        //     this.ctx.save();
+        //     // console.log(this.x+window.UI.canvas.width/2)
+        //     this.ctx.translate(this.x+this.width/2, this.y+this.height/2);
+        //     this.ctx.rotate(this.rotation * Math.PI / 180);
+        //     this.ctx.translate(-(this.x+this.width/2), -(this.y+this.height/2));
+        // }
       
       
       
         if (this.face == 'right') { 
-            this.ctx.drawImage(this.spriteRight, this.x-this.width, this.y-this.height+3);
+            this.ctx.drawImage(this.spriteRight, this.x - 25, this.y-25);
+            // this.ctx.drawImage(this.spriteRight, this.x-this.width, this.y-this.height+3);
+            this.ctx.fillStyle = "blue";
+            this.ctx.fillRect(this.x, this.y, this.width, this.height);
       
             window.UI.ctx.beginPath(); //angle indicator right
             window.UI.ctx.arc(this.x + 20, this.y, 50, (-this.angle+20)*Math.PI/180, (-this.angle-20)*Math.PI/180, true);
@@ -119,7 +131,10 @@ class SpaceShip {
             // this.ctx.fillRect(this.x+this.width - 5, this.y + 5, 2, 2);
       
         } else if (this.face == 'left') {
-                this.ctx.drawImage(this.spriteLeft, this.x-10, this.y-this.height+3);
+                this.ctx.fillStyle = "blue";
+                this.ctx.fillRect(this.x, this.y, this.width, this.height)
+                this.ctx.drawImage(this.spriteLeft, this.x-10, this.y - 25);
+                // this.ctx.drawImage(this.spriteLeft, this.x-10, this.y-this.height+3);
         
                 window.UI.ctx.beginPath(); //angle indicator left
                 window.UI.ctx.arc(this.x+20, this.y, 50, (this.angle+20+180)*Math.PI/180, (this.angle-20+180)*Math.PI/180, true);
@@ -249,8 +264,8 @@ class SpaceShip {
         if (this.face === 'right') {
             if (this.currentWeapon === 1) {
                 const weapon = new Weapon1(
-                this.x+this.width,
-                this.y-15,
+                this.x + this.width, //was + this.width
+                this.y-30, //was -15
                 power*this.weaponSpeed*Math.cos(this.angle*Math.PI/180),
                 -power*this.weaponSpeed*Math.sin(this.angle*Math.PI/180),
                 this.ctx,
@@ -268,21 +283,40 @@ class SpaceShip {
                 );
                 return weapon;
             } else {
-                this.currentWeapon = 1; //reset selector after ss shot
-                const weapon = new Weapon3(
-                this.x+this.width+2,
-                this.y-15,
-                power*this.weaponSpeed*Math.cos(this.angle*Math.PI/180),
-                -power*this.weaponSpeed*Math.sin(this.angle*Math.PI/180),
-                this.ctx,
-                this.ctxTerrain
-                );
-                return weapon;
+                this.currentWeapon = 1;  //reset selector after ss shot
+                let counter = 0;
+                // if(counter < 5){
+                //     setInterval()
+                // }
+                let arr = [];
+                while(counter < 5){
+                    const weapon = new Weapon3(
+                        this.x + this.width + Math.floor(Math.random() * (100 - 1) + 1),
+                        this.y - this.height - 20,
+                        power*this.weaponSpeed*Math.cos(this.angle*Math.PI/180),
+                        -power*this.weaponSpeed*Math.sin(this.angle*Math.PI/180),
+                        this.ctx,
+                        this.ctxTerrain
+                        );
+                    arr.push(weapon);
+                    counter++;
+                }
+                return arr;
+                // this.currentWeapon = 1; //reset selector after ss shot
+                // const weapon = new Weapon3(
+                // this.x+this.width+2,
+                // this.y-15,
+                // power*this.weaponSpeed*Math.cos(this.angle*Math.PI/180),
+                // -power*this.weaponSpeed*Math.sin(this.angle*Math.PI/180),
+                // this.ctx,
+                // this.ctxTerrain
+                // );
+                // return weapon;
             }
         } else if (this.face === 'left') {
             if (this.currentWeapon === 1) {
                 const weapon = new Weapon1(
-                this.x-16,
+                this.x - this.width, // was -16
                 this.y-20,
                 -power*this.weaponSpeed*Math.cos(this.angle*Math.PI/180),
                 -power*this.weaponSpeed*Math.sin(this.angle*Math.PI/180),
@@ -292,7 +326,7 @@ class SpaceShip {
                 return weapon;
             } else if (this.currentWeapon === 2) {
                 const weapon = new Weapon2(
-                this.x-16,
+                this.x - this.width,
                 this.y-20,
                 -power*this.weaponSpeed*Math.cos(this.angle*Math.PI/180),
                 -power*this.weaponSpeed*Math.sin(this.angle*Math.PI/180),
@@ -302,15 +336,24 @@ class SpaceShip {
                 return weapon;
             } else {
                 this.currentWeapon = 1;  //reset selector after ss shot
-                const weapon = new Weapon3(
-                this.x-20,
-                this.y-20,
-                -power*this.weaponSpeed*Math.cos(this.angle*Math.PI/180),
-                -power*this.weaponSpeed*Math.sin(this.angle*Math.PI/180),
-                this.ctx,
-                this.ctxTerrain
-                );
-                return weapon;
+                let counter = 0;
+                // if(counter < 5){
+                //     setInterval()
+                // }
+                let arr = [];
+                while(counter < 5){
+                    const weapon = new Weapon3(
+                        this.x + this.width + Math.floor(Math.random() * (-1 - -100) + -100),
+                        this.y - this.height - 20,
+                        -power*this.weaponSpeed*Math.cos(this.angle*Math.PI/180),
+                        -power*this.weaponSpeed*Math.sin(this.angle*Math.PI/180),
+                        this.ctx,
+                        this.ctxTerrain
+                        );
+                    arr.push(weapon);
+                    counter++;
+                }
+                return arr;
             }
         }
     }

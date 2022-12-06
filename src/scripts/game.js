@@ -6,14 +6,16 @@ import UI from './ui'
 
 class Game {
     // keybinding go here for movement 
-    constructor(canvas, ctx, ctxTerrain, canTerrain, canText, ctxText){
+    constructor(canvas, ctx, ctxTerrain, canTerrain, canText, ctxText, background, ctxBG){
         this.canvas = canvas;
         this.ctx = ctx;
         this.ctxTerrain = ctxTerrain;
         this.canTerrain = canTerrain;
+        this.background = background;
+        this.ctxBG = ctxBG;
         this.map = new Map(this.ctxTerrain, this.canTerrain);
-        this.spaceship1 = new SpaceShip('player 1', 100, -200, ctx, ctxTerrain);
-        this.spaceship2 = new SpaceShip('player 2', 400, -200, ctx, ctxTerrain);
+        this.spaceship1 = new SpaceShip('player 1', 80, -200, ctx, ctxTerrain);
+        this.spaceship2 = new SpaceShip('player 2', 380, -200, ctx, ctxTerrain);
         this.spaceship3 = new SpaceShip('player 3', 750, -200, ctx, ctxTerrain);
         this.spaceship4 = new SpaceShip('player 4', 1050, -200, ctx, ctxTerrain);
         // this.players = []; // this is to allow users to set how many users they want to play with, can just set 4 players if this gets hard
@@ -24,6 +26,8 @@ class Game {
         this.roundCounter = 0;
         this.objects = [];
         this.UI = new UI(this);
+        this.backgroundImg = new Image();
+        this.backgroundImg.src = './assets/cyberpunk-street.png'
 
         this.bindKeyDown = this.bindKeyDown.bind(this);
         this.bindKeyUp = this.bindKeyUp.bind(this);
@@ -84,7 +88,12 @@ class Game {
     }
 
     addObject(obj){
-        this.objects.push(obj);
+        // this.objects.push(obj);
+        if(obj instanceof Array){
+            this.objects = this.objects.concat(obj);
+        } else {
+            this.objects.push(obj)
+        }
     }
 
     removeObject(obj){
@@ -94,9 +103,13 @@ class Game {
     }
 
     render(){
+        
     
         this.ctx.clearRect(0,0,canvas.width, canvas.height);
+        
         window.UI.ctx.clearRect(0,0,window.UI.canvas.width, window.UI.canvas.height);
+        this.ctxBG.drawImage(this.backgroundImg, 0, 0, this.canvas.width, this.canvas.height)
+        
 
         window.map.render(this.ctxTerrain); //render terrain
 
@@ -122,6 +135,8 @@ class Game {
                 window.UI.ctx.fillStyle = 'white';
                 window.UI.ctx.textAlign = "center";
                 window.UI.ctx.fillText(this.time.toString(), this.currentPlayer.x+48, this.currentPlayer.y-51);
+
+       
             }
         }
 
@@ -134,6 +149,41 @@ class Game {
                 window.game.startTurns();
             }
         }
+
+        // if(this.objects.length === 5){
+        //     this.objects[0].render(this.ctx);
+        //     this.objects[1].render(this.ctx);
+        //     this.objects[2].render(this.ctx);
+        //     this.objects[3].render(this.ctx);
+        //     this.objects[4].render(this.ctx);
+        //     for (let i = 0; i < this.objects.length; i++) {
+
+        //         if (this.objects[i] && (Math.abs(this.objects[i].x) > 1800 || Math.abs(this.objects[i].y) > 1800)) {
+        //             this.objects.splice(i, 1);
+    
+        //             document.getElementById('overlay').classList.add('hidden'); //ss shot overlay
+    
+        //             window.game.time = window.game.TIMEOUT;
+        //             clearInterval(this.interval);
+        //             clearTimeout(this.timeout);
+        //             this.startTurns();
+        //         }
+        //     }
+        // } else {
+        //     for (let i = 0; i < this.objects.length; i++) {
+        //     this.objects[i].render(this.ctx);
+        //     if (this.objects[i] && (Math.abs(this.objects[i].x) > 1800 || Math.abs(this.objects[i].y) > 1800)) {
+        //         this.objects.splice(i, 1);
+
+        //         document.getElementById('overlay').classList.add('hidden'); //ss shot overlay
+
+        //         window.game.time = window.game.TIMEOUT;
+        //         clearInterval(this.interval);
+        //         clearTimeout(this.timeout);
+        //         this.startTurns();
+        //         }
+        //     }
+        // }
 
 
         for (let i = 0; i < this.objects.length; i++) {
@@ -151,7 +201,6 @@ class Game {
         }
 
         document.getElementById('angle-display').innerHTML = this.currentPlayer.prevAngle;
-
     }
 
     // startGame(){
@@ -170,7 +219,7 @@ class Game {
     // }
 
     startTurns () {
-        this.turn.play();
+        // this.turn.play(); // put this back on  later 
         window.UI.disabled = false;
         window.removeEventListener('keypress', this.shotKeys);
         window.removeEventListener('keypress', this.shotKeyss);
@@ -182,13 +231,13 @@ class Game {
         document.getElementById('prev-power').style.left = `${this.currentPlayer.prevPower}px`;
 
         const shotKey = (e) => { e.key;
-            if (e.key == '1') this.currentPlayer.switchShot1(); //switch shot event listener
-            if (e.key == '2') this.currentPlayer.switchShot2(); //switch shot event listener
+            if (e.key == '1') this.currentPlayer.switchWeapon1(); //switch shot event listener
+            if (e.key == '2') this.currentPlayer.switchWeapon2(); //switch shot event listener
         };
 
         const shotKeyss = (e) => {
             const keyPress = e.key;
-            if (e.key == '3' && this.currentPlayer.ssCooldown <= 0) this.currentPlayer.switchShotss(); //switch shot event listener
+            if (e.key == '3' && this.currentPlayer.weapon3CD <= 0) this.currentPlayer.switchWeapon3(); //switch shot event listener
         };
 
         if (this.roundCounter !== 0 && this.roundCounter % 3 === 0 && this.turnCounter === 1) { //change wind every 3 rounds
@@ -205,11 +254,11 @@ class Game {
         }
 
         window.addEventListener('keypress', shotKey);
-        document.getElementById('shot1').onclick = this.currentPlayer.switchShot1; //switch shot event listener
-        document.getElementById('shot2').onclick = this.currentPlayer.switchShot2; //switch shot event listener
-        if (this.currentPlayer.ssCooldown <= 0) {
+        document.getElementById('weapon1').onclick = this.currentPlayer.switchWeapon1; //switch shot event listener
+        document.getElementById('weapon2').onclick = this.currentPlayer.switchWeapon2; //switch shot event listener
+        if (this.currentPlayer.weapon3CD <= 0) {
             window.addEventListener('keypress', shotKeyss);
-            document.getElementById('ss').onclick = this.currentPlayer.switchShotss; //switch shot event listener
+            document.getElementById('ss').onclick = this.currentPlayer.switchWeapon3; //switch shot event listener
             document.getElementById('ss').style.background = 'rgb(246, 216, 89)'; //switch shot event listener
         } else {
             document.getElementById('ss').style.background = 'rgb(60,60,60)'; //switch shot event listener

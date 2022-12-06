@@ -47,8 +47,8 @@ class Map{
     }
 
     changeWind(){
-        this.windSpeed = Math.floor(Math.random()*26);
-        this.windAngle = Math.random()*360;
+        // this.windSpeed = Math.floor(Math.random()*26);
+        // this.windAngle = Math.random()*360;
     }
 
 }

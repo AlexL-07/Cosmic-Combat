@@ -13,27 +13,29 @@
   <body>
     <div class="main">
       <div id="overlay" class="hidden"></div>
+      <canvas id="background" width="1200px" height="650px"></canvas>
       <canvas id="canvas" width="1200px" height="650px"></canvas> 
-      <!--  -->
+      <!-- width="1200px" height="650px" -->
       <canvas id="terrain-canvas" width="1200px" height="650px"></canvas>
       <canvas id="ui-canvas" width="1200px" height="650px"></canvas>
       <canvas id="text-canvas" width="1200px" height="650px"></canvas>
+      
     </div>
 
     <div id="bottom-ui">
       <div class="shot-selector-container" id="shot-selection">
-        <div class="shot-selector" id='shot1'>
+        <div class="shot-selector" id='weapon1'>
           <span>1</span>
           <div class="light" id="light1"></div>
         </div>
 
-        <div class="shot-selector" id="shot2">
+        <div class="shot-selector" id="weapon2">
           <span>2</span>
           <div class="light" id="light2"></div>
         </div>
 
         <div class="shot-selector" id="ss">
-          <span>SS</span>
+          <span>3</span>
           <div class="light" id="lightss"></div>
         </div>
       </div>
@@ -59,7 +61,7 @@
     </div>
 
     <div id="turn-queue-container">
-      <span>Delay Queue</span>
+      <span>Turn Queue</span>
       <ul id="turn-queue">
 
       </ul>
@@ -70,7 +72,7 @@
       <img src="./assets/mute-icon.png" class="vol hidden" id="mute">
     </div>
 
-    <ul id="directions-container">
+    <!-- <ul id="directions-container">
       <li>Press 'A' or 'D' to move left or right</li>
       <li>Press 'W' or 'S' to change the angle of your shot</li>
       <li>Press and hold 'Space' to choose the power</li>
@@ -78,7 +80,7 @@
       <li>The longer you take or the more powerful your shot, the more delay you'll get</li>
       <li>Watch out for wind changes!</li>
       <li>Refresh the page to play again!</li>
-    </ul>
+    </ul> -->
 
     <h1>Spaceship Wars</h1>
   </body>
