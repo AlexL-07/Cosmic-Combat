@@ -3,11 +3,12 @@ class Map{
         this.ctx = ctxTerrain;
         this.canvas = canTerrain;
         this.img = new Image();
-        this.img.src = "./assets/terrain-full.png"; 
+        // this.img.src = "./assets/terrain-full.png";
+        this.img.src = "./assets/map_2.png" 
         this.buffer = document.createElement('canvas');
         this.buffer.width = this.canvas.width;
         this.buffer.height = this.canvas.height;
-        this.windSpeed = Math.floor(Math.random() * 26);
+        this.windSpeed = Math.floor(Math.random()*(12 - 0) + 0);
         this.windAngle = Math.random()*360;
 
         this.img.onload = () => {
@@ -47,8 +48,8 @@ class Map{
     }
 
     changeWind(){
-        // this.windSpeed = Math.floor(Math.random()*26);
-        // this.windAngle = Math.random()*360;
+        this.windSpeed = Math.floor(Math.random()*(12 - 0) + 0);
+        this.windAngle = Math.random()*360;
     }
 
 }

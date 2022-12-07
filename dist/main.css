@@ -290,6 +290,7 @@ body {
 
 #wind-container {
   position: relative;
+  margin: auto;
   top: -700px;
   border-radius: 100px;
   width: 70px;
@@ -328,6 +329,8 @@ body {
 }
 
 #turn-queue-container {
+  margin: auto;
+  display: block;
   position: relative;
   left: -520px;
   bottom: 255px;
@@ -359,6 +362,8 @@ body {
 }
 
 #vol-container {
+  margin: auto;
+  display: block;
   position: relative;
   left: -560px;
   top: -880px;
@@ -380,28 +385,6 @@ body {
   left: 420px;
   color: white;
   font-size: 14px;
-}
-
-#item-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  border-radius: 5px;
-  top: -1310px;
-  left: 280px;
-  background: rgb(41, 205, 255);
-  width: 320px;
-  height: 40px;
-  padding: 5px;
-}
-
-.dualshot {
-  border: 1px solid black;
-  border-radius: 6px;
-  width: 100px;
-  height: 40px;
-  box-shadow: 0 0 2px black;
 }
 
 h1 {

@@ -11,7 +11,7 @@ class Weapon1 extends Projectile {
         // this.xVel = xVel;
         // this.yVel = yVel;
         // this.time = 0;
-        // this.radius = 8;
+        // this.radius = 10;
         // this.ctx = ctx;
         // this.weight = 0.055;
         // this.damage = 130;

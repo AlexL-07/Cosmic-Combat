@@ -41,10 +41,8 @@ class SpaceShip {
         // sprites here
         this.spriteLeft = new Image();
         this.spriteLeft.src = './assets/spaceship2_left.png';
-        // this.spriteLeft.set_size(0.5);
         this.spriteRight = new Image();
         this.spriteRight.src = './assets/spaceship2_right.png';
-        // this.spriteRight.set_size(0.5);
 
         // Binding prototype methods
         this.collisionCheck = this.collisionCheck.bind(this);
@@ -62,26 +60,6 @@ class SpaceShip {
             this.turnOver = true;
           }
 
-        // if (this.face === "right"){
-        //     window.UI.ctx.fillStyle = 'rgba(255,0,0,1)'; //healthbar
-        //     window.UI.ctx.fillRect(this.x-43, this.y+this.height+15, this.width+30, 4);
-        //     window.UI.ctx.fillStyle = 'rgba(0,255,0,1)';
-        //     window.UI.ctx.fillRect(this.x-43, this.y+this.height+15, (this.width+30)*(this.health/this.maxHealth), 4);
-            
-        //     window.UI.ctx.font = "14px sans-serif"; //username
-        //     window.UI.ctx.fillStyle = 'white';
-        //     window.UI.ctx.fillText(this.username, this.x, this.y+this.height+35);
-        // } else if (this.face === "left"){
-        //     window.UI.ctx.fillStyle = 'rgba(255,0,0,1)'; //healthbar
-        //     window.UI.ctx.fillRect(this.x, this.y+this.height+15, this.width+30, 4);
-        //     window.UI.ctx.fillStyle = 'rgba(0,255,0,1)';
-        //     window.UI.ctx.fillRect(this.x, this.y+this.height+15, (this.width+30)*(this.health/this.maxHealth), 4);
-      
-        //     window.UI.ctx.font = "14px sans-serif"; //username
-        //     window.UI.ctx.fillStyle = 'white';
-        //     window.UI.ctx.fillText(this.username, this.x+40, this.y+this.height+35);
-        // }
-
         window.UI.ctx.fillStyle = 'rgba(255,0,0,1)'; //healthbar
         window.UI.ctx.fillRect(this.x - 25, this.y+this.height+15, this.width+30, 4);
         window.UI.ctx.fillStyle = 'rgba(0,255,0,1)';
@@ -90,23 +68,10 @@ class SpaceShip {
         window.UI.ctx.font = "14px sans-serif"; //username
         window.UI.ctx.fillStyle = 'white';
         window.UI.ctx.fillText(this.username, this.x + 23, this.y+this.height+35);
-      
-        // if (this.rotation) {
-      
-        //     this.ctx.save();
-        //     // console.log(this.x+window.UI.canvas.width/2)
-        //     this.ctx.translate(this.x+this.width/2, this.y+this.height/2);
-        //     this.ctx.rotate(this.rotation * Math.PI / 180);
-        //     this.ctx.translate(-(this.x+this.width/2), -(this.y+this.height/2));
-        // }
-      
-      
-      
+
         if (this.face == 'right') { 
             this.ctx.drawImage(this.spriteRight, this.x - 25, this.y-25);
             // this.ctx.drawImage(this.spriteRight, this.x-this.width, this.y-this.height+3);
-            this.ctx.fillStyle = "blue";
-            this.ctx.fillRect(this.x, this.y, this.width, this.height);
       
             window.UI.ctx.beginPath(); //angle indicator right
             window.UI.ctx.arc(this.x + 20, this.y, 50, (-this.angle+20)*Math.PI/180, (-this.angle-20)*Math.PI/180, true);
@@ -125,14 +90,9 @@ class SpaceShip {
             window.UI.ctx.strokeStyle = 'rgba(255,0,0,1)';
             window.UI.ctx.stroke();
             window.UI.ctx.closePath();
-            // this.ctx.fillStyle = 'rgba(255,0,0,1)';
-            // this.ctx.fillRect(this.x, this.y, this.width, this.height);
-            // this.ctx.fillStyle = 'rgba(255,255,255,1)';
-            // this.ctx.fillRect(this.x+this.width - 5, this.y + 5, 2, 2);
+
       
         } else if (this.face == 'left') {
-                this.ctx.fillStyle = "blue";
-                this.ctx.fillRect(this.x, this.y, this.width, this.height)
                 this.ctx.drawImage(this.spriteLeft, this.x-10, this.y - 25);
                 // this.ctx.drawImage(this.spriteLeft, this.x-10, this.y-this.height+3);
         
@@ -153,10 +113,6 @@ class SpaceShip {
                 window.UI.ctx.strokeStyle = 'rgba(255,0,0,1)';
                 window.UI.ctx.stroke();
                 window.UI.ctx.closePath();
-                // this.ctx.fillStyle = 'rgba(255,0,0,1)';
-                // this.ctx.fillRect(this.x, this.y, this.width, this.height);
-                // this.ctx.fillStyle = 'rgba(255,255,255,1)';
-                // this.ctx.fillRect(this.x + 5, this.y + 5, 2, 2);
       
         }
         this.ctx.restore();
@@ -167,15 +123,15 @@ class SpaceShip {
             case 1:
               document.getElementById('light1').style.background = 'rgb(0,255,0)';
               document.getElementById('light2').style.background = 'rgb(60,60,60)';
-              document.getElementById('lightss').style.background = 'rgb(60,60,60)';
+              document.getElementById('light3').style.background = 'rgb(60,60,60)';
               break;
             case 2:
               document.getElementById('light2').style.background = 'rgb(0,255,0)';
               document.getElementById('light1').style.background = 'rgb(60,60,60)';
-              document.getElementById('lightss').style.background = 'rgb(60,60,60)';
+              document.getElementById('light3').style.background = 'rgb(60,60,60)';
               break;
             case 3:
-              document.getElementById('lightss').style.background = 'rgb(255,0,0)';
+              document.getElementById('light3').style.background = 'rgb(255,0,0)';
               document.getElementById('light1').style.background = 'rgb(60,60,60)';
               document.getElementById('light2').style.background = 'rgb(60,60,60)';
               break;
@@ -211,7 +167,6 @@ class SpaceShip {
         if (dir) { //moving
             this.distance++;
             if (dir == 'left' && !this.collisionCheck(this.x-1, this.y, 1, this.height/1.5)) {
-              // this.rotate(45);
               this.face = 'left';
               if (this.distance < this.maxDistance) {
                 this.x += velX;
@@ -220,9 +175,6 @@ class SpaceShip {
       
                 }
               }
-              // if (this.collisionCheck(this.x, this.y+this.height-1, 4,4)) {
-              //   console.log('rotate');
-              // }
             }
             if (dir == 'right' && !this.collisionCheck(this.x+this.width+1, this.y, 1, this.height/1.5)) {
               this.face = 'right';
@@ -251,16 +203,17 @@ class SpaceShip {
     shoot(power){
         this.turnOver = true;
         if (this.currentWeapon === 1) {
-            
+            this.delay += 100;
         } else if (this.currentWeapon === 2) {
-            this.delay += 900;
+            this.delay += 300;
         } else if (this.currentWeapon === 3) {
-            this.delay += 1300;
+            this.delay += 1000;
             this.weapon3CD = 3;
             document.getElementById('overlay').classList.remove('hidden');
         }
-
-        this.weapon3CD--;
+        if (this.weapon3CD > 0){
+            this.weapon3CD--;
+        } 
         if (this.face === 'right') {
             if (this.currentWeapon === 1) {
                 const weapon = new Weapon1(
@@ -283,11 +236,8 @@ class SpaceShip {
                 );
                 return weapon;
             } else {
-                this.currentWeapon = 1;  //reset selector after ss shot
+                this.currentWeapon = 1;  
                 let counter = 0;
-                // if(counter < 5){
-                //     setInterval()
-                // }
                 let arr = [];
                 while(counter < 5){
                     const weapon = new Weapon3(
@@ -302,16 +252,6 @@ class SpaceShip {
                     counter++;
                 }
                 return arr;
-                // this.currentWeapon = 1; //reset selector after ss shot
-                // const weapon = new Weapon3(
-                // this.x+this.width+2,
-                // this.y-15,
-                // power*this.weaponSpeed*Math.cos(this.angle*Math.PI/180),
-                // -power*this.weaponSpeed*Math.sin(this.angle*Math.PI/180),
-                // this.ctx,
-                // this.ctxTerrain
-                // );
-                // return weapon;
             }
         } else if (this.face === 'left') {
             if (this.currentWeapon === 1) {
@@ -335,11 +275,8 @@ class SpaceShip {
                 );
                 return weapon;
             } else {
-                this.currentWeapon = 1;  //reset selector after ss shot
+                this.currentWeapon = 1;
                 let counter = 0;
-                // if(counter < 5){
-                //     setInterval()
-                // }
                 let arr = [];
                 while(counter < 5){
                     const weapon = new Weapon3(

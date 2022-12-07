@@ -5,7 +5,6 @@ import UI from './ui'
 
 
 class Game {
-    // keybinding go here for movement 
     constructor(canvas, ctx, ctxTerrain, canTerrain, canText, ctxText, background, ctxBG){
         this.canvas = canvas;
         this.ctx = ctx;
@@ -14,10 +13,10 @@ class Game {
         this.background = background;
         this.ctxBG = ctxBG;
         this.map = new Map(this.ctxTerrain, this.canTerrain);
-        this.spaceship1 = new SpaceShip('player 1', 80, -200, ctx, ctxTerrain);
-        this.spaceship2 = new SpaceShip('player 2', 380, -200, ctx, ctxTerrain);
-        this.spaceship3 = new SpaceShip('player 3', 750, -200, ctx, ctxTerrain);
-        this.spaceship4 = new SpaceShip('player 4', 1050, -200, ctx, ctxTerrain);
+        this.spaceship1 = new SpaceShip('Player 1', 80, -200, ctx, ctxTerrain);
+        this.spaceship2 = new SpaceShip('Player 2', 380, -200, ctx, ctxTerrain);
+        this.spaceship3 = new SpaceShip('Player 3', 750, -200, ctx, ctxTerrain);
+        this.spaceship4 = new SpaceShip('Player 4', 1050, -200, ctx, ctxTerrain);
         // this.players = []; // this is to allow users to set how many users they want to play with, can just set 4 players if this gets hard
         this.currentPlayer = this.spaceship1;
         this.TIMEOUT = 30;
@@ -27,13 +26,13 @@ class Game {
         this.objects = [];
         this.UI = new UI(this);
         this.backgroundImg = new Image();
-        this.backgroundImg.src = './assets/cyberpunk-street.png'
+        this.backgroundImg.src = './assets/bg2.png'
 
         this.bindKeyDown = this.bindKeyDown.bind(this);
         this.bindKeyUp = this.bindKeyUp.bind(this);
 
         window.game = this;
-        window.spaceShips = [this.spaceship1, this.spaceship2, this.spaceship3, this.spaceship4];
+        window.spaceShips = [this.spaceship1, this.spaceship2, this.spaceship3, this.spaceship4].sort(() => Math.random() - 0.5);
         window.canText = canText;
         window.ctxText = ctxText;
 
@@ -103,8 +102,6 @@ class Game {
     }
 
     render(){
-        
-    
         this.ctx.clearRect(0,0,canvas.width, canvas.height);
         
         window.UI.ctx.clearRect(0,0,window.UI.canvas.width, window.UI.canvas.height);
@@ -130,13 +127,10 @@ class Game {
                 window.UI.ctx.fillRect(this.currentPlayer.x+33, this.currentPlayer.y-70, 30, 25);
                 window.UI.ctx.strokeStyle = 'rgba(0,0,0,1)';
                 window.UI.ctx.strokeRect(this.currentPlayer.x+33, this.currentPlayer.y-70, 30, 25);
-                
                 window.UI.ctx.font = "20px sans-serif"; //timer text for currentPlayer
                 window.UI.ctx.fillStyle = 'white';
                 window.UI.ctx.textAlign = "center";
                 window.UI.ctx.fillText(this.time.toString(), this.currentPlayer.x+48, this.currentPlayer.y-51);
-
-       
             }
         }
 
@@ -149,43 +143,6 @@ class Game {
                 window.game.startTurns();
             }
         }
-
-        // if(this.objects.length === 5){
-        //     this.objects[0].render(this.ctx);
-        //     this.objects[1].render(this.ctx);
-        //     this.objects[2].render(this.ctx);
-        //     this.objects[3].render(this.ctx);
-        //     this.objects[4].render(this.ctx);
-        //     for (let i = 0; i < this.objects.length; i++) {
-
-        //         if (this.objects[i] && (Math.abs(this.objects[i].x) > 1800 || Math.abs(this.objects[i].y) > 1800)) {
-        //             this.objects.splice(i, 1);
-    
-        //             document.getElementById('overlay').classList.add('hidden'); //ss shot overlay
-    
-        //             window.game.time = window.game.TIMEOUT;
-        //             clearInterval(this.interval);
-        //             clearTimeout(this.timeout);
-        //             this.startTurns();
-        //         }
-        //     }
-        // } else {
-        //     for (let i = 0; i < this.objects.length; i++) {
-        //     this.objects[i].render(this.ctx);
-        //     if (this.objects[i] && (Math.abs(this.objects[i].x) > 1800 || Math.abs(this.objects[i].y) > 1800)) {
-        //         this.objects.splice(i, 1);
-
-        //         document.getElementById('overlay').classList.add('hidden'); //ss shot overlay
-
-        //         window.game.time = window.game.TIMEOUT;
-        //         clearInterval(this.interval);
-        //         clearTimeout(this.timeout);
-        //         this.startTurns();
-        //         }
-        //     }
-        // }
-
-
         for (let i = 0; i < this.objects.length; i++) {
             this.objects[i].render(this.ctx);
             if (this.objects[i] && (Math.abs(this.objects[i].x) > 1800 || Math.abs(this.objects[i].y) > 1800)) {
@@ -222,9 +179,11 @@ class Game {
         // this.turn.play(); // put this back on  later 
         window.UI.disabled = false;
         window.removeEventListener('keypress', this.shotKeys);
-        window.removeEventListener('keypress', this.shotKeyss);
-        if (this.turnCounter === 1) window.spaceShips = window.spaceShips.sort((a,b) => a.delay - b.delay);
-
+        window.removeEventListener('keypress', this.shotKey3);
+        window.spaceShips.sort((a,b) => a.delay - b.delay)
+        if (this.currentPlayer === window.spaceShips[0] && window.spaceShips.length !== 2){
+            window.spaceShips.push(window.spaceShips.shift())
+        }
         this.currentPlayer = window.spaceShips[0]; //change turn
         this.currentPlayer.delay = 0;
         this.currentPlayer.distance = 0;
@@ -235,21 +194,21 @@ class Game {
             if (e.key == '2') this.currentPlayer.switchWeapon2(); //switch shot event listener
         };
 
-        const shotKeyss = (e) => {
+        const shotKey3 = (e) => {
             const keyPress = e.key;
             if (e.key == '3' && this.currentPlayer.weapon3CD <= 0) this.currentPlayer.switchWeapon3(); //switch shot event listener
         };
 
         if (this.roundCounter !== 0 && this.roundCounter % 3 === 0 && this.turnCounter === 1) { //change wind every 3 rounds
-            this.wind.play();
+            // this.wind.play(); //put this back in later 
             this.map.changeWind();
         }
 
 
         document.getElementById('turn-queue').innerHTML = '';
-        for (let i = 1; i < window.spaceShips.length+1; i++) { //print queue
+        for (let i = 0; i < window.spaceShips.length; i++) { //print queue
             let li = document.createElement('li');
-            li.innerHTML = `${window.spaceShips[i-1].username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${window.spaceShips[i-1].delay}`;
+            li.innerHTML = `${window.spaceShips[i].username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${window.spaceShips[i].delay}`;
             document.getElementById('turn-queue').appendChild(li);
         }
 
@@ -257,11 +216,11 @@ class Game {
         document.getElementById('weapon1').onclick = this.currentPlayer.switchWeapon1; //switch shot event listener
         document.getElementById('weapon2').onclick = this.currentPlayer.switchWeapon2; //switch shot event listener
         if (this.currentPlayer.weapon3CD <= 0) {
-            window.addEventListener('keypress', shotKeyss);
-            document.getElementById('ss').onclick = this.currentPlayer.switchWeapon3; //switch shot event listener
-            document.getElementById('ss').style.background = 'rgb(246, 216, 89)'; //switch shot event listener
+            window.addEventListener('keypress', shotKey3);
+            document.getElementById('weapon3').onclick = this.currentPlayer.switchWeapon3; //switch shot event listener
+            document.getElementById('weapon3').style.background = 'rgb(246, 216, 89)'; //switch shot event listener
         } else {
-            document.getElementById('ss').style.background = 'rgb(60,60,60)'; //switch shot event listener
+            document.getElementById('weapon3').style.background = 'rgb(60,60,60)'; //switch shot event listener
         }
 
         this.currentPlayer.turnOver = false;
@@ -283,7 +242,7 @@ class Game {
             this.time = this.TIMEOUT;
             clearTimeout(this.timeout);
         } else {
-            this.currentPlayer.delay += 10;
+            // this.currentPlayer.delay += 10;
             this.time--;
             document.getElementById('main-timer').innerHTML = this.time;
         }
@@ -295,6 +254,15 @@ class Game {
             this.startTurns();
         }, this.TIMEOUT*1000);
 
+        this.playerDecayInc();
+    }
+
+    playerDecayInc(){
+        window.spaceShips.forEach(spaceship => {
+            if(spaceship.delay > 100){
+                spaceship.delay -= 100;
+            }
+        })
     }
 
     // switchTurn(){
@@ -310,9 +278,8 @@ class Game {
         this.time = "";
         window.UI.ctx.font = "80px sans-serif";
         window.UI.ctx.fillStyle = 'red';
-        window.UI.ctx.fillText(`${spaceship.username} Wins!`, this.can.width/2, this.can.height/2-50);
+        window.UI.ctx.fillText(`${spaceship.username} Wins!`, this.canvas.width/2, this.canvas.height/2-50);
     }
-
 }
 
 export default Game

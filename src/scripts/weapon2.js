@@ -12,12 +12,12 @@ class Weapon2 extends Projectile {
         // this.xVel = xVel;
         // this.yVel = yVel;
         // this.time = 0;
-        this.radius = 15;
+        this.radius = 20;
         // this.ctx = ctx;
         // this.weight = 0.055;
         this.damage = 100;
         // this.hitObject = null;
-        this.explosionRadius = 80;
+        this.explosionRadius = 100;
         // this.ctxTerrain = ctxTerrain;
         // // this.color = 'rgb(0,255,0)' // change this to use a sprite
         // this.windAngle = window.map.windAngle;
