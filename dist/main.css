@@ -395,3 +395,30 @@ h1 {
   top: -1220px;
   right: 300px;
 }
+
+#start-game {
+  background-image: url("../assets/Menu2.png");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  height: 650px;
+  width: 1200px;
+}
+
+#start-button {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 75px;
+  cursor: pointer;
+}
+
+#instructions-button {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 25px;
+  cursor: pointer;
+}
