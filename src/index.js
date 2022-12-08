@@ -80,7 +80,7 @@ function startGame(){
   let timer = document.createElement('div');
   timer.id = 'main-timer';
   document.getElementsByClassName('main')[0].insertBefore(timer, ui);
-  // game.theme.play();  
+  game.theme.play();  
   game.startTurns();
 
   const gameLoop = () => {

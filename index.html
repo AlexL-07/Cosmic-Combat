@@ -82,28 +82,36 @@
     </div>
     
     <div id="instructions" style="display:none">
-      <button id="instructions-back" onclick="{()=>instructionBackMain()}">
-        <img src="./assets/back_arrow-removebg.png" height="50px">
-      </button>
-      <img src="./assets/instructionperf.png">
+      <div id="instruction-back-ban">
+        <button id="instructions-back" onclick="{()=>instructionBackMain()}">
+          <img src="./assets/back_arrow-removebg.png" height="50px">
+        </button>
+        <img src="./assets/instructionperf.png" id="instruction-banner">
+      </div>
       <ol id="instructions-container">
         <li>The goal is to be the last spaceship standing.</li>
-        <li>You can defeat your opponents by depleting their healthbars or dropping them off of the map.</li>
+        <li>You can defeat your opponents by depleting their healthbars or by dropping them off of the map</li>
         <li>Press 'A' or 'D' to move left or right</li>
-        <li>Press 'W' or 'S' to change the angle of your shot</li>
-        <li>Press and hold 'Space' to choose the power</li>
-        <li>Click '1', '2', or '3' on the weapon selector to choose your weapon.</li>
-        <li>Depending on your weapon choice, you will experience a delay for your turns.</li>
-        <li>Watch out for gravity changes.</li>
+        <li>Press 'W' or 'S' to adjust the angle of your shot</li>
+        <li>Hold and let go of 'Space' to choose the power for your shot</li>
+        <li>Click '1', '2', or '3' on the weapon selector to choose your weapon</li>
+        <li>Depending on your weapon choice, you will experience a delay for your turns
+          <ol>
+            <li>Weapon 1 adds a delay of 100</li>
+            <li>Weapon 2 adds a delay of 300</li>
+            <li>Weapon 3 adds a delay of 600</li>
+          </ol>
+        </li>
+        <li>Watch out for gravity changes</li>
       </ol>
     </div>
     <div class="footer">
-      <button id="muteButton"><img src="./assets/mute-icon.png" alt="mute button" height="50"></button>
-    <button id="unmuteButton"><img src="./assets/high-sound-icon.png" alt="unmute button" height="50"></button>
-      <a href="https://github.com/T1LT/PlanetaryDevastation" target="_blank" rel="noopener noreferrer">
+      <button id="muteButton"><img src="./assets/mute-icon.png" alt="mute button" height="40"></button>
+    <button id="unmuteButton"><img src="./assets/high-sound-icon.png" alt="unmute button" height="40"></button>
+      <a href="https://github.com/AlexL-07/Cosmic-Combat" target="_blank" rel="noopener noreferrer">
           <img src="./assets/github.png" alt="Github Link" height="33">
       </a>
-      <a href="https://www.linkedin.com/in/nishant-racherla-a51370167/" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.linkedin.com/in/alex-luong-15b488183/" target="_blank" rel="noopener noreferrer">
           <img src="./assets/linkedin.png" alt="LinkedIn Link" height="35">
       </a>
   </div>

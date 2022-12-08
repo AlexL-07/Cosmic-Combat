@@ -51,6 +51,10 @@ table {
   border-spacing: 0;
 }
 
+@font-face {
+  font-family: pixel-font;
+  src: url(../assets/slkscr.ttf);
+}
 .hidden {
   display: none !important;
 }
@@ -406,20 +410,29 @@ body {
 }
 
 #instructions-back {
-  position: absolute;
-  left: auto;
+  margin-right: 117px;
   background: none;
   border: none;
   user-select: none;
   cursor: pointer;
 }
 
-#instructions-container {
-  font-weight: 200;
-  width: 900px;
-  height: 400px;
+ol {
+  font-family: pixel-font;
+  width: 1000px;
   color: white;
-  font-size: 24px;
+  font-size: 22px;
+  counter-reset: item;
+  padding-left: 32px;
+}
+
+li {
+  display: block;
+}
+
+#instructions-container li:before {
+  content: counters(item, ".") ". ";
+  counter-increment: item;
 }
 
 .vol {
@@ -434,7 +447,7 @@ body {
   border: none;
   user-select: none;
   cursor: pointer;
-  margin-right: 12px;
+  margin-right: 80px;
 }
 
 #unmuteButton {
@@ -442,5 +455,32 @@ body {
   border: none;
   user-select: none;
   cursor: pointer;
-  margin-right: 12px;
+  margin-right: 80px;
+}
+
+.footer {
+  font-family: "andale mono", monospace;
+}
+
+.footer a {
+  margin: 0px;
+  color: white;
+  text-decoration: none;
+  user-select: none;
+}
+
+#game {
+  height: 775px;
+  width: 1200px;
+}
+
+#instruction-banner {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+#instruction-back-ban {
+  display: flex;
+  width: 90%;
+  justify-content: flex-start;
 }
