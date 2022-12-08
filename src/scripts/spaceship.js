@@ -217,8 +217,8 @@ class SpaceShip {
         if (this.face === 'right') {
             if (this.currentWeapon === 1) {
                 const weapon = new Weapon1(
-                this.x + this.width, //was + this.width
-                this.y-30, //was -15
+                this.x + this.width, 
+                this.y-30, 
                 power*this.weaponSpeed*Math.cos(this.angle*Math.PI/180),
                 -power*this.weaponSpeed*Math.sin(this.angle*Math.PI/180),
                 this.ctx,

@@ -6,7 +6,7 @@ import Map from './map'
 class Weapon2 extends Projectile {
     constructor(xPos, yPos, xVel, yVel, ctx, ctxTerrain){
         super(xPos, yPos, xVel, yVel, ctx, ctxTerrain);
-        this.sprite.src = "./assets/small_fireball.png"
+        this.sprite.src = "./assets/30new.png"
         // this.x = xPos;
         // this.y = yPos + 10;
         // this.xVel = xVel;

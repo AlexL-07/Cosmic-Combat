@@ -16,13 +16,10 @@ class Projectile {
         this.hitObject = null;
         this.explosionRadius = 50;
         this.ctxTerrain = ctxTerrain;
-        // this.color = 'rgb(0,255,0)' // change this to use a sprite
         this.sprite = new Image();
         this.sprite.src = './assets/small_blue_fireball.png'
         this.windAngle = window.map.windAngle;
         this.windSpeed = window.map.windSpeed;
-
-        // this.collisionCheck = this.collisionCheck.bind(this);
     }
 
     render(ctx){
@@ -58,31 +55,25 @@ class Projectile {
     
         //terrain collision
         } else if (this.collisionCheck(this.x, this.y, this.radius*2, this.radius*2) === 'terrain') {
-                window.game.removeObject(this);
-                window.map.weapon = this;
-        
-                document.getElementById('overlay').classList.add('hidden'); 
-        
-                window.game.time = window.game.TIMEOUT;
-                clearInterval(window.game.interval);
-                clearTimeout(window.game.timeout);
-                window.game.startTurns();
+          window.game.removeObject(this);
+          window.map.weapon = this;
+  
+          document.getElementById('overlay').classList.add('hidden'); 
+  
+          window.game.time = window.game.TIMEOUT;
+          clearInterval(window.game.interval);
+          clearTimeout(window.game.timeout);
+          window.game.startTurns();
     
         //no collision
         } else {
-    
-    
-            this.x += this.xVel + 0.02*this.windSpeed*Math.cos(this.windAngle*Math.PI/180)*this.time; //x coordinate
-            this.y += this.yVel + 0.5*this.weight*this.time*this.time - 0.02*this.windSpeed*Math.sin(this.windAngle*Math.PI/180)*this.time; //y-coordinate
-
-            
-            ctx.beginPath(); //render weapon
-            ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI);
-            ctx.drawImage(this.sprite, this.x, this.y)
-            // // ctx.fillStyle = this.color;
-            // ctx.fill();
-            ctx.closePath();
-            this.time += 0.5;
+          this.x += this.xVel + 0.02*this.windSpeed*Math.cos(this.windAngle*Math.PI/180)*this.time; //x coordinate
+          this.y += this.yVel + 0.5*this.weight*this.time*this.time - 0.02*this.windSpeed*Math.sin(this.windAngle*Math.PI/180)*this.time; //y-coordinate
+          ctx.beginPath(); //render weapon
+          ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI);
+          ctx.drawImage(this.sprite, this.x, this.y)
+          ctx.closePath();
+          this.time += 0.5;
         }
 
     }

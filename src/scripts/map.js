@@ -3,7 +3,6 @@ class Map{
         this.ctx = ctxTerrain;
         this.canvas = canTerrain;
         this.img = new Image();
-        // this.img.src = "./assets/terrain-full.png";
         this.img.src = "./assets/map_2.png" 
         this.buffer = document.createElement('canvas');
         this.buffer.width = this.canvas.width;
@@ -37,7 +36,7 @@ class Map{
 
         document.getElementById('wind-text').innerHTML = `${this.windSpeed}`; //wind speed text
 
-        window.UI.ctx.beginPath(); //wind angle display
+        window.UI.ctx.beginPath(); // wind angle display 
         window.UI.ctx.arc(this.canvas.width/2, 45, 40, (-this.windAngle+10)*Math.PI/180, (-this.windAngle-10)*Math.PI/180, true);
         window.UI.ctx.strokeStyle = 'rgba(255,0,0,255)';
         window.UI.ctx.lineWidth = 10;

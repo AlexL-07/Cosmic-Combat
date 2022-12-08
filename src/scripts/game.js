@@ -39,33 +39,35 @@ class Game {
         window.keyDown = window.addEventListener('keydown', this.bindKeyDown);
         window.keyUp = window.addEventListener('keyup', this.bindKeyUp);
 
-        // this.startGame = this.startGame.bind(this);
         this.startTurns = this.startTurns.bind(this);
         this.render = this.render.bind(this);
         // this.addPlayers = this.addPlayers.bind(this);
 
-        // Need to add these assets
 
         this.theme = document.createElement('audio');
         this.theme.src = './assets/theme.mp3';
         this.theme.id = 'theme';
         this.theme.loop = true;
-        this.theme.volume = 0.7;
+        this.theme.volume = 0.3;
+        // this.theme.muted = true;
 
         this.turn = document.createElement('audio');
         this.turn.src = './assets/turn.mp3';
         this.turn.id = 'turn';
-        this.turn.volume = 0.7;
+        this.turn.volume = 0.3;
+        // this.turn.muted = true;
 
         this.win = document.createElement('audio');
         this.win.src = './assets/win.mp3';
         this.win.id = 'win';
-        this.win.volume = 0.7;
+        this.win.volume = 0.3;
+        // this.win.muted = true;
 
         this.wind = document.createElement('audio');
         this.wind.src = './assets/wind.mp3';
         this.wind.id = 'wind';
-        this.wind.volume = 0.7;
+        this.wind.volume = 0.3;
+        // this.wind.muted = true;
     }
 
     bindKeyDown(event){
@@ -87,7 +89,6 @@ class Game {
     }
 
     addObject(obj){
-        // this.objects.push(obj);
         if(obj instanceof Array){
             this.objects = this.objects.concat(obj);
         } else {
@@ -176,7 +177,7 @@ class Game {
     // }
 
     startTurns () {
-        // this.turn.play(); // put this back on  later 
+        this.turn.play(); // put this back on  later 
         window.UI.disabled = false;
         window.removeEventListener('keypress', this.shotKeys);
         window.removeEventListener('keypress', this.shotKey3);
@@ -200,7 +201,7 @@ class Game {
         };
 
         if (this.roundCounter !== 0 && this.roundCounter % 3 === 0 && this.turnCounter === 1) { //change wind every 3 rounds
-            // this.wind.play(); //put this back in later 
+            this.wind.play(); 
             this.map.changeWind();
         }
 
@@ -265,10 +266,6 @@ class Game {
         })
     }
 
-    // switchTurn(){
-    //     let prevPlayer = this.players.shift();
-    //     this.players.push(prevPlayer);
-    // }
 
     gameOver(spaceship){
         this.win.play();

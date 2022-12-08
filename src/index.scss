@@ -1,6 +1,5 @@
 @import './styles/reset.scss';
 
-
 .hidden {
   display: none !important;
 }
@@ -129,7 +128,7 @@ body {
   height: 50px;
   background-color: rgb(41, 205, 255);
 }
-#ss {
+#weapon3 {
   background-color: rgb(246, 216, 89);
 }
 
@@ -302,48 +301,10 @@ body {
 }
 
 #vol-container {
-  margin: auto;
-  display: block;
-  position: relative;
-  left: -560px;
-  top: -880px;
-  z-index: 10000;
-  cursor: pointer;
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
 }
-
-.vol {
-  height: 50px;
-  width: 50px;
-}
-
-#directions-container {
-  font-weight: 200;
-  width: 300px;
-  height: 200px;
-  position: relative;
-  top: -450px;
-  left: 420px;
-  color: white;
-  font-size: 14px;
-}
-
-
-
-h1 {
-  color: red;
-  font-size: 70px;
-  font-weight: bold;
-  position: relative;
-  top: -1220px;
-  right: 300px;
-}
-// #menuBG {
-//   background-image: url('../assets/Menu2.png');
-//   background-repeat: no-repeat;
-//   height: 650px;
-//   width: 1200px;
-// }
-
 
 #start-game{
   background-image: url('../assets/Menu2.png');
@@ -371,6 +332,57 @@ h1 {
   padding: 0px;
   margin-top: 25px;
   cursor: pointer;
+}
+
+#instructions{
+  background-image: url('../assets/Base.png');
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  height: 650px;
+  width: 1200px;
+  // margin-top: 50px;
+}
+
+#instructions-back{
+  position: absolute;
+  left: auto;
+  background: none;
+  border: none;
+  user-select: none;
+  cursor: pointer;  
+}
+#instructions-container {
+  font-weight: 200;
+  width: 900px;
+  height: 400px;
+  color: white;
+  font-size: 24px;
+}
+
+.vol{
+  background: none;
+  border: none;
+  user-select: none;
+  cursor: pointer;  
+}
+
+#muteButton {
+  background: none;
+  border: none;
+  user-select: none;
+  cursor: pointer;
+  margin-right: 12px;
+}
+
+#unmuteButton {
+  background: none;
+  border: none;
+  user-select: none;
+  cursor: pointer;
+  margin-right: 12px;
 }
 
 
