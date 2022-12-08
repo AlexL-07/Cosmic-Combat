@@ -51,7 +51,7 @@ In addition, this project will include:
 ## Future Features
 * Add moving sprites
 * Add more spaceships 
-* Allow for users to select how many players 
+* Allow for users to select number of players 
 
 
 
