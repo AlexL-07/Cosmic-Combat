@@ -69,7 +69,7 @@ class Projectile {
         } else {
           this.x += this.xVel + 0.02*this.windSpeed*Math.cos(this.windAngle*Math.PI/180)*this.time; //x coordinate
           this.y += this.yVel + 0.5*this.weight*this.time*this.time - 0.02*this.windSpeed*Math.sin(this.windAngle*Math.PI/180)*this.time; //y-coordinate
-          ctx.beginPath(); //render weapon
+          ctx.beginPath(); 
           ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI);
           ctx.drawImage(this.sprite, this.x, this.y)
           ctx.closePath();

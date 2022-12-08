@@ -32,8 +32,7 @@ class SpaceShip {
         } else{
             this.face = "left";
         }
-         // might want logic to get players to face left if they are on the right half of map
-        this.alive = true; // might want to use this for respawns IDK
+        // this.alive = true; 
         ctx.fillStyle = 'rgba(255,0,0,1)';
         this.weaponSpeed = 0.25;
 

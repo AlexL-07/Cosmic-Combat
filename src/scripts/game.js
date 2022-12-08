@@ -177,7 +177,7 @@ class Game {
     // }
 
     startTurns () {
-        this.turn.play(); // put this back on  later 
+        this.turn.play(); 
         window.UI.disabled = false;
         window.removeEventListener('keypress', this.shotKeys);
         window.removeEventListener('keypress', this.shotKey3);
