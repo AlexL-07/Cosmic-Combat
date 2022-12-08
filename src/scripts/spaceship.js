@@ -74,19 +74,19 @@ class SpaceShip {
             // this.ctx.drawImage(this.spriteRight, this.x-this.width, this.y-this.height+3);
       
             window.UI.ctx.beginPath(); //angle indicator right
-            window.UI.ctx.arc(this.x + 20, this.y, 50, (-this.angle+20)*Math.PI/180, (-this.angle-20)*Math.PI/180, true);
+            window.UI.ctx.arc(this.x + 60, this.y, 50, (-this.angle+20)*Math.PI/180, (-this.angle-20)*Math.PI/180, true);
             window.UI.ctx.strokeStyle = 'rgba(255,255,255,0.7)';
             window.UI.ctx.stroke();
             window.UI.ctx.closePath();
       
             window.UI.ctx.beginPath();
-            window.UI.ctx.arc(this.x + 20, this.y, 50, (-this.angle+5)*Math.PI/180, (-this.angle-5)*Math.PI/180, true);
+            window.UI.ctx.arc(this.x + 60, this.y, 50, (-this.angle+5)*Math.PI/180, (-this.angle-5)*Math.PI/180, true);
             window.UI.ctx.strokeStyle = 'rgba(255,0,0,0.7)';
             window.UI.ctx.stroke();
             window.UI.ctx.closePath();
       
             window.UI.ctx.beginPath();
-            window.UI.ctx.arc(this.x + 20, this.y, 45, (-this.angle+2)*Math.PI/180, (-this.angle-2)*Math.PI/180, true);
+            window.UI.ctx.arc(this.x + 60, this.y, 45, (-this.angle+2)*Math.PI/180, (-this.angle-2)*Math.PI/180, true);
             window.UI.ctx.strokeStyle = 'rgba(255,0,0,1)';
             window.UI.ctx.stroke();
             window.UI.ctx.closePath();
@@ -97,19 +97,19 @@ class SpaceShip {
                 // this.ctx.drawImage(this.spriteLeft, this.x-10, this.y-this.height+3);
         
                 window.UI.ctx.beginPath(); //angle indicator left
-                window.UI.ctx.arc(this.x+20, this.y, 50, (this.angle+20+180)*Math.PI/180, (this.angle-20+180)*Math.PI/180, true);
+                window.UI.ctx.arc(this.x+5, this.y, 50, (this.angle+20+180)*Math.PI/180, (this.angle-20+180)*Math.PI/180, true);
                 window.UI.ctx.strokeStyle = 'rgba(255,255,255,0.7)';
                 window.UI.ctx.stroke();
                 window.UI.ctx.closePath();
         
                 window.UI.ctx.beginPath();
-                window.UI.ctx.arc(this.x+20, this.y, 50, (this.angle+5+180)*Math.PI/180, (this.angle-5+180)*Math.PI/180, true);
+                window.UI.ctx.arc(this.x+5, this.y, 50, (this.angle+5+180)*Math.PI/180, (this.angle-5+180)*Math.PI/180, true);
                 window.UI.ctx.strokeStyle = 'rgba(255,0,0,0.7)';
                 window.UI.ctx.stroke();
                 window.UI.ctx.closePath();
         
                 window.UI.ctx.beginPath();
-                window.UI.ctx.arc(this.x+20, this.y, 45, (this.angle+2+180)*Math.PI/180, (this.angle-2+180)*Math.PI/180, true);
+                window.UI.ctx.arc(this.x+5, this.y, 45, (this.angle+2+180)*Math.PI/180, (this.angle-2+180)*Math.PI/180, true);
                 window.UI.ctx.strokeStyle = 'rgba(255,0,0,1)';
                 window.UI.ctx.stroke();
                 window.UI.ctx.closePath();
