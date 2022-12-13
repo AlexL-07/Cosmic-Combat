@@ -57,7 +57,6 @@ body {
   top: 30px;
   height: 650px;
   width: 1200px;
-  background: linear-gradient(blue, orange);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -342,9 +341,6 @@ body {
 }
 
 #instructions-back{
-  // position: absolute;
-  // left: 50px;
-  // top: 120px;
   margin-right: 117px;
   background: none;
   border: none;
