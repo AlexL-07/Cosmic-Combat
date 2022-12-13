@@ -17,7 +17,6 @@ class Game {
         this.spaceship2 = new SpaceShip('Player 2', 380, -200, ctx, ctxTerrain);
         this.spaceship3 = new SpaceShip('Player 3', 750, -200, ctx, ctxTerrain);
         this.spaceship4 = new SpaceShip('Player 4', 1050, -200, ctx, ctxTerrain);
-        // this.players = []; // this is to allow users to set how many users they want to play with, can just set 4 players if this gets hard
         this.currentPlayer = this.spaceship1;
         this.TIMEOUT = 30;
         this.time = 30;
@@ -41,7 +40,6 @@ class Game {
 
         this.startTurns = this.startTurns.bind(this);
         this.render = this.render.bind(this);
-        // this.addPlayers = this.addPlayers.bind(this);
 
 
         this.theme = document.createElement('audio');
@@ -72,7 +70,7 @@ class Game {
 
     bindKeyDown(event){
         const keyName = event.key;
-        if (keyName == 'a') this.currentPlayer.move(-1.5, 'left'); //1.5
+        if (keyName == 'a') this.currentPlayer.move(-1.5, 'left'); 
         if (keyName == 'd') this.currentPlayer.move(1.5, 'right');
         if (keyName == 'w') this.currentPlayer.changeAngle(2);
         if (keyName == 's') this.currentPlayer.changeAngle(-2);
@@ -161,20 +159,7 @@ class Game {
         document.getElementById('angle-display').innerHTML = this.currentPlayer.prevAngle;
     }
 
-    // startGame(){
-
-    // }
-
-    // addPlayers(num){
-    //     let i = 1;
-    //     while(i <= num){
-    //         let xPos = Math.floor(Math.random() * (1100 - 100) + 100); //change 1100 - 100 to fit your max min of your terrain later 
-    //         let yPos = -200;
-    //         let player = new SpaceShip(`Player ${i}`, xPos, yPos, ctx, ctxTerrain);
-    //         this.players.push(player);
-    //         i++;
-    //     }
-    // }
+    
 
     startTurns () {
         this.turn.play(); 
@@ -185,54 +170,54 @@ class Game {
         if (this.currentPlayer === window.spaceShips[0] && window.spaceShips.length !== 2){
             window.spaceShips.push(window.spaceShips.shift())
         }
-        this.currentPlayer = window.spaceShips[0]; //change turn
+        this.currentPlayer = window.spaceShips[0]; 
         this.currentPlayer.delay = 0;
         this.currentPlayer.distance = 0;
         document.getElementById('prev-power').style.left = `${this.currentPlayer.prevPower}px`;
 
         const shotKey = (e) => { e.key;
-            if (e.key == '1') this.currentPlayer.switchWeapon1(); //switch shot event listener
-            if (e.key == '2') this.currentPlayer.switchWeapon2(); //switch shot event listener
+            if (e.key == '1') this.currentPlayer.switchWeapon1(); 
+            if (e.key == '2') this.currentPlayer.switchWeapon2(); 
         };
 
         const shotKey3 = (e) => {
             const keyPress = e.key;
-            if (e.key == '3' && this.currentPlayer.weapon3CD <= 0) this.currentPlayer.switchWeapon3(); //switch shot event listener
+            if (e.key == '3' && this.currentPlayer.weapon3CD <= 0) this.currentPlayer.switchWeapon3(); 
         };
 
-        if (this.roundCounter !== 0 && this.roundCounter % 3 === 0 && this.turnCounter === 1) { //change wind every 3 rounds
+        if (this.roundCounter !== 0 && this.roundCounter % 3 === 0 && this.turnCounter === 1) { 
             this.wind.play(); 
             this.map.changeWind();
         }
 
 
         document.getElementById('turn-queue').innerHTML = '';
-        for (let i = 0; i < window.spaceShips.length; i++) { //print queue
+        for (let i = 0; i < window.spaceShips.length; i++) { 
             let li = document.createElement('li');
             li.innerHTML = `${window.spaceShips[i].username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${window.spaceShips[i].delay}`;
             document.getElementById('turn-queue').appendChild(li);
         }
 
         window.addEventListener('keypress', shotKey);
-        document.getElementById('weapon1').onclick = this.currentPlayer.switchWeapon1; //switch shot event listener
-        document.getElementById('weapon2').onclick = this.currentPlayer.switchWeapon2; //switch shot event listener
+        document.getElementById('weapon1').onclick = this.currentPlayer.switchWeapon1; 
+        document.getElementById('weapon2').onclick = this.currentPlayer.switchWeapon2; 
         if (this.currentPlayer.weapon3CD <= 0) {
             window.addEventListener('keypress', shotKey3);
-            document.getElementById('weapon3').onclick = this.currentPlayer.switchWeapon3; //switch shot event listener
-            document.getElementById('weapon3').style.background = 'rgb(246, 216, 89)'; //switch shot event listener
+            document.getElementById('weapon3').onclick = this.currentPlayer.switchWeapon3; 
+            document.getElementById('weapon3').style.background = 'rgb(246, 216, 89)'; 
         } else {
-            document.getElementById('weapon3').style.background = 'rgb(60,60,60)'; //switch shot event listener
+            document.getElementById('weapon3').style.background = 'rgb(60,60,60)'; 
         }
 
         this.currentPlayer.turnOver = false;
 
-        window.spaceShips.push(window.spaceShips.shift()); //queue next turn
+        window.spaceShips.push(window.spaceShips.shift()); 
 
-        if (this.turnCounter % window.spaceShips.length === 0) { //if last turn inc round and reset turns
+        if (this.turnCounter % window.spaceShips.length === 0) { 
             this.roundCounter++;
             this.turnCounter = 1;
 
-        } else { //otherwise inc turns
+        } else { 
             this.turnCounter++;
         }
 
@@ -243,7 +228,6 @@ class Game {
             this.time = this.TIMEOUT;
             clearTimeout(this.timeout);
         } else {
-            // this.currentPlayer.delay += 10;
             this.time--;
             document.getElementById('main-timer').innerHTML = this.time;
         }

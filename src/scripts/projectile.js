@@ -32,10 +32,10 @@ class Projectile {
             window.ctxText.fillText('-'+this.damage.toString(), this.x, this.y-20); //damage text
     
             if (this.hitObject.health > 0) {
-                this.hitObject.health -= this.damage; //do damage
+                this.hitObject.health -= this.damage; 
     
-                if (this.hitObject.health <= 0) { //player death
-                    window.spaceShips.splice( //destroy spaceship obj
+                if (this.hitObject.health <= 0) { 
+                    window.spaceShips.splice( 
                     window.spaceShips.indexOf(this.hitObject), 1
                     );
                     window.game.turnCounter--;
@@ -48,7 +48,7 @@ class Projectile {
                 window.game.startTurns();
             }
     
-            window.setTimeout(() => { //damage text clearing
+            window.setTimeout(() => { 
             window.ctxText.clearRect(0, 0, window.canText.width, window.canText.height);
             this.hitObject = null;
             }, 1250);
@@ -79,7 +79,7 @@ class Projectile {
     }
 
     collisionCheck(x, y, width, height){
-        for (let i = 0; i < window.spaceShips.length; i++) {  //spaceShips array on window
+        for (let i = 0; i < window.spaceShips.length; i++) {  
             if (this.isCollidedWith(window.spaceShips[i])) {
               this.hitObject = window.spaceShips[i];
               return 'spaceship';

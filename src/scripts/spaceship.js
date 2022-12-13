@@ -70,7 +70,7 @@ class SpaceShip {
 
         if (this.face == 'right') { 
             this.ctx.drawImage(this.spriteRight, this.x - 25, this.y-25);
-            // this.ctx.drawImage(this.spriteRight, this.x-this.width, this.y-this.height+3);
+     
       
             window.UI.ctx.beginPath(); //angle indicator right
             window.UI.ctx.arc(this.x + 60, this.y, 50, (-this.angle+20)*Math.PI/180, (-this.angle-20)*Math.PI/180, true);
@@ -93,7 +93,7 @@ class SpaceShip {
       
         } else if (this.face == 'left') {
                 this.ctx.drawImage(this.spriteLeft, this.x-10, this.y - 25);
-                // this.ctx.drawImage(this.spriteLeft, this.x-10, this.y-this.height+3);
+              
         
                 window.UI.ctx.beginPath(); //angle indicator left
                 window.UI.ctx.arc(this.x+5, this.y, 50, (this.angle+20+180)*Math.PI/180, (this.angle-20+180)*Math.PI/180, true);
@@ -163,7 +163,7 @@ class SpaceShip {
     }
 
     move(velX = 0, dir){
-        if (dir) { //moving
+        if (dir) { 
             this.distance++;
             if (dir == 'left' && !this.collisionCheck(this.x-1, this.y, 1, this.height/1.5)) {
               this.face = 'left';
@@ -186,7 +186,7 @@ class SpaceShip {
             }
       
       
-          } else { //not moving
+          } else { 
                 this.x = this.x;
                 if (!this.collisionCheck(this.x, this.y+this.height+1, this.width, 1)) {
                 this.y += 6;
@@ -255,7 +255,7 @@ class SpaceShip {
         } else if (this.face === 'left') {
             if (this.currentWeapon === 1) {
                 const weapon = new Weapon1(
-                this.x - this.width, // was -16
+                this.x - this.width, 
                 this.y-20,
                 -power*this.weaponSpeed*Math.cos(this.angle*Math.PI/180),
                 -power*this.weaponSpeed*Math.sin(this.angle*Math.PI/180),

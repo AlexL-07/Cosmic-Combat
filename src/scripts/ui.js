@@ -16,7 +16,7 @@ class UI {
             const power = document.getElementById('power-fill');
             let width = parseInt(power.style.width.slice(0,-2));
       
-            if (!this.interval) { //power bar fill
+            if (!this.interval) { 
               this.interval = setInterval(
                 () => {
                   width = parseInt(power.style.width.slice(0,-2));
