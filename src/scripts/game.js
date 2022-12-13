@@ -70,10 +70,10 @@ class Game {
 
     bindKeyDown(event){
         const keyName = event.key;
-        if (keyName == 'a') this.currentPlayer.move(-1.5, 'left'); 
-        if (keyName == 'd') this.currentPlayer.move(1.5, 'right');
-        if (keyName == 'w') this.currentPlayer.changeAngle(2);
-        if (keyName == 's') this.currentPlayer.changeAngle(-2);
+        if (keyName == 'a' || keyName == 'A') this.currentPlayer.move(-1.5, 'left'); 
+        if (keyName == 'd' || keyName == 'D') this.currentPlayer.move(1.5, 'right');
+        if (keyName == 'w' || keyName == 'W') this.currentPlayer.changeAngle(2);
+        if (keyName == 's' || keyName == 'S') this.currentPlayer.changeAngle(-2);
         if (keyName == ' ') {
             event.preventDefault();
             this.UI.startAdjustPower();
