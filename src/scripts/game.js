@@ -116,8 +116,8 @@ class Game {
                 window.UI.ctx.fillRect(this.currentPlayer.x-15, this.currentPlayer.y-70, 30, 25);
                 window.UI.ctx.strokeStyle = 'rgba(0,0,0,1)';
                 window.UI.ctx.strokeRect(this.currentPlayer.x-15, this.currentPlayer.y-70, 30, 25);
-                window.UI.ctx.font = "20px sans-serif"; //timer text for currentPlayer
-                window.UI.ctx.fillStyle = 'white';
+                window.UI.ctx.font = "20px pixel-font"; //timer text for currentPlayer
+                window.UI.ctx.fillStyle = 'black';
                 window.UI.ctx.textAlign = "center";
                 window.UI.ctx.fillText(this.time.toString(), this.currentPlayer.x, this.currentPlayer.y-51);
 
@@ -126,8 +126,8 @@ class Game {
                 window.UI.ctx.fillRect(this.currentPlayer.x+33, this.currentPlayer.y-70, 30, 25);
                 window.UI.ctx.strokeStyle = 'rgba(0,0,0,1)';
                 window.UI.ctx.strokeRect(this.currentPlayer.x+33, this.currentPlayer.y-70, 30, 25);
-                window.UI.ctx.font = "20px sans-serif"; //timer text for currentPlayer
-                window.UI.ctx.fillStyle = 'white';
+                window.UI.ctx.font = "20px pixel-font"; //timer text for currentPlayer
+                window.UI.ctx.fillStyle = 'black';
                 window.UI.ctx.textAlign = "center";
                 window.UI.ctx.fillText(this.time.toString(), this.currentPlayer.x+48, this.currentPlayer.y-51);
             }
@@ -257,7 +257,7 @@ class Game {
         clearTimeout(this.timeout);
         clearInterval(this.interval);
         this.time = "";
-        window.UI.ctx.font = "80px sans-serif";
+        window.UI.ctx.font = "80px pixel-font";
         window.UI.ctx.fillStyle = 'red';
         window.UI.ctx.fillText(`${spaceship.username} Wins!`, this.canvas.width/2, this.canvas.height/2-50);
     }

@@ -27,7 +27,7 @@ class Projectile {
         if (this.collisionCheck(this.x, this.y, this.radius*2, this.radius*2) === 'spaceship') {
             window.game.removeObject(this);
             window.map.weapon = this;
-            window.ctxText.font = "20px sans-serif";
+            window.ctxText.font = "20px pixel-font";
             window.ctxText.fillStyle = "red";
             window.ctxText.fillText('-'+this.damage.toString(), this.x, this.y-20); //damage text
     

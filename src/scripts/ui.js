@@ -6,7 +6,7 @@ class UI {
         this.canvas = document.getElementById('ui-canvas');
         this.ctx = this.canvas.getContext('2d');
         this.ctx.fillStyle = 'white';
-        this.ctx.font = '20px sans-serif';
+        this.ctx.font = '20px pixel-font';
         window.UI = this;
         this.disabled = false;
     }

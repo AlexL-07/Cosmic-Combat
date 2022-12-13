@@ -64,9 +64,10 @@ class SpaceShip {
         window.UI.ctx.fillStyle = 'rgba(0,255,0,1)';
         window.UI.ctx.fillRect(this.x - 25, this.y+this.height+15, (this.width+30)*(this.health/this.maxHealth), 4);
   
-        window.UI.ctx.font = "14px sans-serif"; //username
+        window.UI.ctx.font = "14px pixel-font"; //username
         window.UI.ctx.fillStyle = 'white';
         window.UI.ctx.fillText(this.username, this.x + 23, this.y+this.height+35);
+
 
         if (this.face == 'right') { 
             this.ctx.drawImage(this.spriteRight, this.x - 25, this.y-25);
@@ -217,7 +218,7 @@ class SpaceShip {
             if (this.currentWeapon === 1) {
                 const weapon = new Weapon1(
                 this.x + this.width, 
-                this.y-30, 
+                this.y-20, 
                 power*this.weaponSpeed*Math.cos(this.angle*Math.PI/180),
                 -power*this.weaponSpeed*Math.sin(this.angle*Math.PI/180),
                 this.ctx,
@@ -227,7 +228,7 @@ class SpaceShip {
             } else if (this.currentWeapon === 2) {
                 const weapon = new Weapon2(
                 this.x+this.width,
-                this.y-15,
+                this.y-20,
                 power*this.weaponSpeed*Math.cos(this.angle*Math.PI/180),
                 -power*this.weaponSpeed*Math.sin(this.angle*Math.PI/180),
                 this.ctx,
