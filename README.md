@@ -1,4 +1,5 @@
 # Cosmic Combat
+[Live Link](https://alexl-07.github.io/Cosmic-Combat/) 
 ## Background 
 Cosmic Combat is a 4 player turn-based game, that allows each player to take control of a spaceship. The goal of this game is to defeat all of your opponents by 
 using your spaceship's arsenal of weapons to depelete their health bars before they deplete yours. The mechanics of using your spaceship's weapons will be similar 
