@@ -15,7 +15,7 @@ const instructionsBack = document.getElementById("instructions-back")
 
 let game = new Game(canvas, ctx, ctxTerrain, terrain, canText, ctxText, background, ctxBG);
 
-game.theme.play()
+// game.theme.play()
 
 const muteButton = document.getElementById("muteButton");
 const unmuteButton = document.getElementById("unmuteButton");
